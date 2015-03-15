@@ -1,0 +1,95 @@
+/*
+Theme Name: Hackathon Theme
+Theme URI: 
+Description: A theme for the Hackathon Event
+Author: Laurent David
+Author URI: 
+Template: wp-forge
+Version: 3.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.1.html
+Tags: light, gray, white, one-column, two-columns, right-sidebar, custom-background, custom-header, custom-menu, editor-style, featured-images, full-width-template, microformats, post-formats, rtl-language-support, sticky-post, translation-ready
+Text Domain: hackathontheme
+*/
+@CHARSET "UTF-8";
+.header_container {
+ 	margin-top: -45px;
+ 	height: 800px;
+	background: url('img/before-event-background.jpg') center no-repeat ;
+	background-color: #ffffff;
+}
+
+.screen-reader-text {
+  height: 1px;
+  width: 1px;
+  position: absolute;
+  overflow: hidden;
+  top: -10px;
+}
+
+
+.btn, input, body {
+  font-family: proxima-nova, 'Proxima Nova', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+
+.avatars, .timeline .bubble, #tiptip_content, .form-row label, fieldset legend, .ss-q-title, h1, h2, h3, h4, .site-header, .site-header .search-input, .home-events .event-locations a, .page-menu, .pagination .posts-nav, .search-bar .search-input, .search-bar .search-field, .search-bar select, .search-bar input[type='submit'], .event-organizers, .data-list .meta, .report-nav, .report-people blockquote {
+  font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+
+ #social_header {
+ 	background: #000000;
+ 	min-height: 35px;
+ }
+ .social_search_bar {
+	padding-right:0px;
+	padding-left:0px;
+ }
+ #searchsubmit, #s {
+ 	   padding: auto;
+ 	   height:29px;
+ 	   margin:auto;
+ 	   margin-top:2px;
+ }
+ .top-bar {
+ 	background-color: rgba(175,198,233,0.50) !important;
+ }
+ 
+#header {
+	background-color:transparent;
+}
+ 
+.site-header {
+	margin-top: 100px;
+	height: 600px;
+	background-color: rgba(255,212,42,0.20) !important;
+	border: 2px #ff820e dotted;
+	-moz-border-radius: 23px;
+	border-radius: 23px;
+	-webkit-box-shadow: #B3B3B3 14px 14px 14px;
+	-moz-box-shadow: #B3B3B3 14px 14px 14px;
+	box-shadow: #B3B3B3 14px 14px 14px;
+	
+}
+
+.site-title {
+	text-align: center;
+	font-size: 80px;
+	font-weight: bold;
+	color:#444444;
+}
+.site-description {
+	text-align: center;
+	font-size: 46px;
+	font-weight: bold;
+	color:#222222;
+}
+.hackathon-dates {
+	text-align: center;
+	font-size: 56px;
+	font-weight: bold;
+	color:#ff0000;
+}
+.register-hackathon {
+	background-color : #ff0000 !important;
+	font-weight: bold;
+	align: center;
+	margin-left:35%
+}
