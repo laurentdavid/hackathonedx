@@ -16,6 +16,8 @@
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 <?php wp_head(); ?>
+<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css' rel='stylesheet' />
 </head>
 
 <body <?php body_class(); ?>>
@@ -26,10 +28,8 @@
             <img src="<?php bloginfo('url'); ?>/wp-content/themes/hackathon-theme/img/facebook30.png" alt="<?php _e( 'Facebook Link','hackathon-theme' ); ?>"/>
             <img src="<?php bloginfo('url'); ?>/wp-content/themes/hackathon-theme/img/twitter30.png" alt="<?php _e( 'Facebook Link','hackathon-theme' ); ?>"/>
 		</div>
-		<div class="large-2 columns">
-		</div>
-		<div class="social_search_bar large-7 columns">
-			<?php the_widget( "WP_Widget_Search" ); ?> 
+		<div class="social_search_bar large-offset-6 large-3 columns">
+			<?php the_widget( "WP_Widget_Search" ); ?>  
 		</div>
 		
 	</div>
@@ -44,7 +44,7 @@
         <?php get_template_part( 'content', 'nav' ); ?>
     <?php } // end if ?>
 
-        <div class="header_container">
+        <div class="header_container" data-interchange="[<?php bloginfo('url'); ?>/wp-content/themes/hackathon-theme/img/before-event-background-small.jpg,(small)], [<?php bloginfo('url'); ?>/wp-content/themes/hackathon-theme/img/before-event-background-medium.jpg,(medium)], [<?php bloginfo('url'); ?>/wp-content/themes/hackathon-theme/img/before-event-background-large.jpg,(large)][<?php bloginfo('url'); ?>/wp-content/themes/hackathon-theme/img/before-event-background-xlarge.jpg,(xlarge)]">
 
         <header id="header" class="header_wrap row" role="banner"> 
             <div class="site-header medium-12 large-12 columns">
@@ -53,10 +53,9 @@
                     <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php header_image(); ?>" class="header-image" alt="<?php echo esc_attr( get_bloginfo('name', 'display') ); ?>" /></a>
                 </div><!-- /.header-logo -->
                 <?php endif; ?>
-                <div class="header-info">
-                	
+                <div class="header-info">                	
                     <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-                    <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
+                    <h2 class="site-description show-for-medium-up"><?php bloginfo( 'description' ); ?></h2>
                     <h2 class="hackathon-dates"><?php  echo get_theme_mod( 'event_date_text' ); ?></h2>
                     <a href="#" class="button round large register-hackathon"><?php  _e( 'Register Now!','hackathon-theme' ); ?></a>                    
                 </div><!-- /.header-info -->

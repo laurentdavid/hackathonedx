@@ -1,0 +1,12 @@
+{% for post in posts %}
+<div class="organiser-thumb">
+	<a href="{{post.link}}">
+		<img class="organiser-logo" src="{{TimberImage( post.organiser_logo ).src}}"
+		alt="Image for {{post.title}}" /> 
+		<span class="organiser-title">{{post.title}}</span> 
+		<span class="organiser-excerpt">{{post.post_excerpt}}</span>
+	</a>
+</div>
+{% else %}
+<div>{{ __("No organisers have been found.","hackathon-theme") }}</div>
+{% endfor %}

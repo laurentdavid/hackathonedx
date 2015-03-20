@@ -14,7 +14,7 @@
 			<input type="text" value="" name="s" id="s" placeholder="<?php esc_attr_e('Search', 'wpforge'); ?>">
 		</div>
 		<div class="medium-2 large-2 columns">
-			<input type="submit" id="searchsubmit" value="<?php esc_attr_e('Search', 'wpforge'); ?>" class="button postfix">
+			<input type="submit" id="searchsubmit" class="button postfix" value="<?php esc_attr_e('Search', 'wpforge'); ?>" >
 		</div>
 	</div>
 </form>

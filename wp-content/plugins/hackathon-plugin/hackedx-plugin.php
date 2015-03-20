@@ -16,6 +16,8 @@ function hackathon_load_translation_files() {
 require_once ('project-plugin.php');
 require_once ('challenges-info-plugin.php');
 require_once ('locations-info-plugin.php');
+require_once ('organisers-info-plugin.php');
+require_once ('sponsors-info-plugin.php');
 
 
 // add action to load my plugin files

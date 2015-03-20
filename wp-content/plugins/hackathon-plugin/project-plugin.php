@@ -49,37 +49,43 @@ add_filter( 'cmb_meta_boxes', 'cmb_project_metaboxes' );
 function cmb_project_metaboxes( array $meta_boxes ) {
 	$fields=array(
 			array (
-					'id'             => 'team-members',
+					'id'             => 'team_members',
 					'name'           => 'Team members',
 					'type'           => 'group',
 					'repeatable'     => true,
-					'repeatable_max' => 5,
 					'fields' => array (
 							array (
-									'id' => 'team-member-name',
-									'name' => 'Name',
-									'type' => 'text'
-							),
-							array (
-									'id' => 'team-member-email',
+									'id' => 'team_member_email',
 									'name' => 'Email',
 									'type' => 'text'
 							),
 							array (
-									'id' => 'team-member-role',
+									'id' => 'team_member_role',
 									'name' => 'Role',
 									'type' => 'text'
-							),
-							array (
-									'id' => 'team-member-website',
-									'name' => 'Website/URL',
-									'type' => 'url'
-							),
+							),								
 					)
-			)
+			),
+			array (
+					'id' => 'link_demo',
+					'name' => __('Demo Link'),
+					'type' => 'text_url'
+			),
+			array (
+					'id' => 'link_repo',
+					'name' => __('Repository Link'),
+					'type' => 'text_url'
+			),
+			array (
+					'id' => 'link_video',
+					'name' => __('Video Link'),
+					'type' => 'text_url'
+			),
 	);
-	$meta_boxes[] = array(
+	// Challenges and location are taxonomies so we leave them out
+	$meta_boxes['project_metabox'] = array(
 			'title' => 'Project Information',
+			'id' => 'project_metabox',
 			'pages' => array('projects'),
 			'context'    => 'normal',
 			'priority'   => 'high',

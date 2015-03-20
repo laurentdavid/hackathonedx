@@ -1,0 +1,12 @@
+{% for post in posts %}
+<div class="location-thumb">
+	<a href="{{post.link}}">
+		<img class="location-logo" src="{{TimberImage( post.location_logo ).src}}"
+		alt="Image for {{post.title}}" /> 
+		<span class="location-title">{{post.title}}</span> 
+		<span class="location-excerpt">{{post.post_excerpt}}</span>
+	</a>
+</div>
+{% else %}
+<div>{{ __("No locations have been found.","hackathon-theme") }}</div>
+{% endfor %}

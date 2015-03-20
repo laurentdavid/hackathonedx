@@ -12,13 +12,8 @@ Tags: light, gray, white, one-column, two-columns, right-sidebar, custom-backgro
 Text Domain: hackathontheme
 */
 @CHARSET "UTF-8";
-.header_container {
- 	margin-top: -45px;
- 	height: 800px;
-	background: url('img/before-event-background.jpg') center no-repeat ;
-	background-color: #ffffff;
-}
 
+/* Remove the screen reader Text */
 .screen-reader-text {
   height: 1px;
   width: 1px;
@@ -27,30 +22,22 @@ Text Domain: hackathontheme
   top: -10px;
 }
 
-
+/* Reset Fonts */
 .btn, input, body {
   font-family: proxima-nova, 'Proxima Nova', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
 
 .avatars, .timeline .bubble, #tiptip_content, .form-row label, fieldset legend, .ss-q-title, h1, h2, h3, h4, .site-header, .site-header .search-input, .home-events .event-locations a, .page-menu, .pagination .posts-nav, .search-bar .search-input, .search-bar .search-field, .search-bar select, .search-bar input[type='submit'], .event-organizers, .data-list .meta, .report-nav, .report-people blockquote {
   font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
 
- #social_header {
- 	background: #000000;
- 	min-height: 35px;
- }
- .social_search_bar {
-	padding-right:0px;
-	padding-left:0px;
- }
- #searchsubmit, #s {
- 	   padding: auto;
- 	   height:29px;
- 	   margin:auto;
- 	   margin-top:2px;
- }
- .top-bar {
- 	background-color: rgba(175,198,233,0.50) !important;
- }
+/* Header settings for front page */
+
+.header_container {
+ 	margin-top: -45px;
+ 	background-repeat: no-repeat;
+ 	background-position: top;
+	background-color: #eeeeee;
+}
+
  
 #header {
 	background-color:transparent;
@@ -58,9 +45,10 @@ Text Domain: hackathontheme
  
 .site-header {
 	margin-top: 100px;
-	height: 600px;
+	margin-bottom: 100px;
+	height: 80%;
 	background-color: rgba(255,212,42,0.20) !important;
-	border: 2px #ff820e dotted;
+	border: 1px #ff820e dotted;
 	-moz-border-radius: 23px;
 	border-radius: 23px;
 	-webkit-box-shadow: #B3B3B3 14px 14px 14px;
@@ -75,21 +63,51 @@ Text Domain: hackathontheme
 	font-weight: bold;
 	color:#444444;
 }
+
 .site-description {
 	text-align: center;
 	font-size: 46px;
 	font-weight: bold;
 	color:#222222;
 }
+
 .hackathon-dates {
 	text-align: center;
 	font-size: 56px;
 	font-weight: bold;
 	color:#ff0000;
 }
+
 .register-hackathon {
 	background-color : #ff0000 !important;
 	font-weight: bold;
-	align: center;
-	margin-left:35%
+	text-align: center;
+	display: block;
+	font-variant: small-caps;
+	/*margin-left:35%*/
 }
+
+/** Social */
+ #social_header {
+ 	background: #000000;
+ 	min-height: 35px;
+ 	padding:2px;
+ 	padding-top: 3px;
+ }
+ .social_search_bar {
+	padding-right:2px;
+	padding-left:2px;
+ }
+ #searchsubmit, #s {
+ 	   padding: 2px;
+ 	   height:29px;
+ 	   margin:auto;
+ 	   padding-top: 3px;
+ 	   /*margin-top:2px;*/
+ }
+ .top-bar {
+ 	background-color: rgba(255,212,42,0.10) !important;
+ }
+ 
+ #map {height:600px;}
+ 

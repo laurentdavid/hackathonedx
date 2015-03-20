@@ -49,7 +49,7 @@ add_filter( 'cmb_meta_boxes', 'cmb_challenge_metaboxes' );
 function cmb_challenge_metaboxes( array $meta_boxes ) {
 	$fields=array(
 			array(
-					'id'   => 'challenge-image-header',
+					'id'   => 'challenge_image_header',
 					'name' => __('Background Image', 'hackathon-plugin'),
 					'desc' => __('Select a background image for the challenge presentation', 'hackathon-plugin'),
 					'type' => 'image',
@@ -57,14 +57,14 @@ function cmb_challenge_metaboxes( array $meta_boxes ) {
 					'size' => 'width=960&height=150&crop=1',
 			),
 			array(
-					'id'   => 'challenge-video-url',
+					'id'   => 'challenge_video_url',
 					'name' => __('Video URL', 'hackathon-plugin'),
 					'desc' => __('Select a video presenting the challenge', 'hackathon-plugin'),
 					'type' => 'text_url',
 			),
 				
 	);
-	$meta_boxes[] = array(
+	$meta_boxes['challenge_info_metabox'] = array(
 			'title' => 'Challenge Information',
 			'pages' => array('challenges-info'),
 			'context'    => 'normal',

@@ -50,7 +50,7 @@ add_filter( 'cmb_meta_boxes', 'cmb_location_metaboxes' );
 function cmb_location_metaboxes( array $meta_boxes ) {
 	$fields=array(
 			array(
-					'id'   => 'location-image-header',
+					'id'   => 'location_image_header',
 					'name' => __('Background Image', 'hackathon-plugin'),
 					'desc' => __('Select a background image for the location presentation', 'hackathon-plugin'),
 					'type' => 'image',
@@ -58,7 +58,7 @@ function cmb_location_metaboxes( array $meta_boxes ) {
 					'size' => 'width=980&height=200&crop=1',
 			),
 			array(
-					'id'   => 'location-logo',
+					'id'   => 'location_logo',
 					'name' => __('Logo Image', 'hackathon-plugin'),
 					'desc' => __('Select a logo for the host location', 'hackathon-plugin'),
 					'type' => 'image',
@@ -66,14 +66,14 @@ function cmb_location_metaboxes( array $meta_boxes ) {
 					'size' => 'width=170&height=110&crop=1',
 			),
 			array(
-					'id'   => 'location-video-url',
+					'id'   => 'location_video_url',
 					'name' => __('Video URL', 'hackathon-plugin'),
 					'desc' => __('Select a video presenting the location', 'hackathon-plugin'),
 					'type' => 'text_url',
 			),
 				
 	);
-	$meta_boxes[] = array(
+	$meta_boxes['location_info_metabox'] = array(
 			'title' => 'Location Information',
 			'pages' => array('locations-info'),
 			'context'    => 'normal',

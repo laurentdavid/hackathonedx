@@ -1,0 +1,12 @@
+{% for post in posts %}
+<div class="sponsor-thumb">
+	<a href="{{post.link}}">
+		<img class="sponsor-logo" src="{{TimberImage( post.sponsor_logo ).src}}"
+		alt="Image for {{post.title}}" /> 
+		<span class="sponsor-title">{{post.title}}</span> 
+		<span class="sponsor-excerpt">{{post.post_excerpt}}</span>
+	</a>
+</div>
+{% else %}
+<div>{{ __("No sponsors have been found.","hackathon-theme") }}</div>
+{% endfor %}

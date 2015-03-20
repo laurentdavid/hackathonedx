@@ -1,0 +1,88 @@
+<form id="project-edit-form" method="POST" data-abide>
+{%  if not (validation_result is empty) %}
+	<div class="row" >
+	     <div data-alert class="alert-box alert">{{  validation_result }}</div>
+	</div>
+{%  endif %}
+	<div class="row">
+		<div class="large-12 columns">
+			<label>{{ __("Project Name","hackathon-theme") }} <input type="text"
+				placeholder="{{ __("Project Name","hackathon-theme") }}..." name="project_name" value="{{ post.title }}" required />
+			</label>
+			<small class="error">{{ __("A project name is required","hackathon-theme") }}</small>
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-12 columns">
+			<label>{{ __("Project Description","hackathon-theme") }}
+				{{function('wp_editor',post.content,'project_description')}} </label>
+		</div>
+	</div>
+	<div class="row">
+    	<div class="large-12 columns">
+      		<label>{{ __("Challenge","hackathon-theme") }} 
+        	<select name="project_challenge_taxid">
+				{% for challenge in  challengestax %}
+          			<option value="{{ challenge.term_id }}" {%if selected_challenge_tax == challenge.term_id %}selected{% endif %}>{{ challenge.name }}</option>  
+				{% endfor %}
+			</select>
+      		</label>
+    	</div>
+    </div>
+	<div class="row">
+		<div class="large-12 columns">
+			<label>{{ __("Location","hackathon-theme") }}
+		    <select name="project_location_taxid">
+				{% for location in  locationtax %}
+          			<option value="{{ location.term_id }}" {%if selected_location_tax == location.term_id %}selected{% endif %} >{{ location.name }}</option>  
+				{% endfor %}
+			</select>
+      		</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-12 columns">
+			<label>{{ __("Demo Link","hackathon-theme") }} <input type="url"
+				placeholder="{{ __("Demo Link","hackathon-theme") }}..." name="link_demo"  value="{{ post.link_demo }}" />
+			</label>
+			<small class="error">{{ __("A valid link is required","hackathon-theme") }}</small>
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-12 columns">
+			<label>{{ __("Repository Link","hackathon-theme") }} <input type="url"
+				placeholder="{{ __("Repository Link","hackathon-theme") }}..." name="link_repo" value="{{ post.link_repo }}" />
+			</label>
+			<small class="error">{{ __("A valid link is required","hackathon-theme") }}</small>
+		</div>
+	</div>
+		<div class="row">
+		<div class="large-12 columns">
+			<label>{{ __("Video Link","hackathon-theme") }} <input type="url"
+				placeholder="{{ __("Video URL","hackathon-theme") }}..." name="link_video" value="{{ post.link_video }}"/>
+			</label>
+			<small class="error">{{ __("A valid link is required","hackathon-theme") }}</small>
+		</div>
+	</div>		
+			
+	<fieldset>
+		<legend>
+			Team Members *<a href="#" class="btn" id="add-team-member"
+				title="Add Team Member">+</a>
+		</legend>
+{%  for i in 0..constant('MAX_TEAM_SIZE') %}
+	{% include 'team-member.twig' with { 'team_member': post.team_members[i], 'loop': loop }  %} 
+{%  endfor %}
+	</fieldset>
+	<div class="row">
+
+		<div class="large-12 columns">
+			<input type="hidden" name="action" value="submit_project" />
+			<input type="hidden" name="project_metabox" value="1" /> <!-- Here only for front-end use of metaboxes fonctionality-->
+			{{function('wp_nonce_field','hackathon-theme','wp_meta_box_nonce')}}
+			<input type="hidden" name="postid" value="{% if not post.id is empty %}{{post.id}}{% endif%}" />
+			<button class="button postfix" type="submit">{{__("Save","hackathon-theme") }}</button>
+		</div>
+	</div>
+
+</form>

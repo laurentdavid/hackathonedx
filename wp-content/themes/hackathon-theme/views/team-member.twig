@@ -1,0 +1,20 @@
+<div class="team-member-form-row" style="display:{% if team_member.team_member_email is empty %}none{% else %}block{% endif %};" >
+		<div class="content">
+			<a href="#" class="close">&times;</a>
+		<div class="form-row">
+		<div class="grid grid-half">
+			<label for="team_member_email[{{ loop.index0 }}]">Email</label> <input class="required"
+					type="email" class="team_member_email" name="team_members[cmb-group-{{ loop.index0 }}][team_member_email][cmb-field-0]"
+					value="{{ team_member.team_member_email }}"  {% if not team_member.team_member_email is empty %}required{%else%}disabled{% endif %} />
+			<small class="error">{{ __("A valid email is required...","hackathon-theme") }}</small>
+		</div>
+		</div>
+			<div class="form-row">
+				<div class="grid grid-half">
+					<label for="team_member_role[{{ loop.index0 }}]">Role</label> <input 
+							type="text" name="team_members[cmb-group-{{ loop.index0 }}][team_member_role][cmb-field-0]"
+							value="{{ team_member.team_member_role}}" {% if team_member.team_member_email is empty %}disabled{% endif %}/>
+				</div>
+			</div>
+		</div>
+</div>
