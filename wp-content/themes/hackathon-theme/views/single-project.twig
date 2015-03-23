@@ -1,0 +1,40 @@
+<div class="row">
+	<div class="small-10 columns">
+		<div class="post">
+			<img src="{{post.thumbnail.src}}" alt="" /> 
+			{% if post.video_link %} {{
+			function ('do_shortcode','[fve]http://'~post.video_link~'[/fve]') }}
+			{% endif %} 
+			{{ post.post_content }}
+		</div>
+		{% if (enhanced_teammembers | length) > 0 %}
+		<h4>{{ __("Team Members","hackathon-plugin") }}</h4>
+		<ul class="small-block-grid-{{ enhanced_teammembers | length}}">
+			{%  for tm in enhanced_teammembers %}
+				{% include 'team-member.twig' with { 'team_member': tm, 'loop': loop }  %} 
+			{% endfor %}
+		<ul>
+		{% endif %}
+	</div>
+	
+	<div class="small-2 columns">
+		<div class="widget">
+			{% if post.link_demo %} <a class="btn" target="_blank"
+				href="{{  post.link_demo }}">Demo Site</a> {% endif %} {% if
+			post.link_demo %} <a class="btn" target="_blank"
+				href="{{  post.link_demo }}">Code Repository</a> {% endif %}
+
+			<div class="event-info">
+				<h3>{{ __("Challenges","hackathon-theme") }}</h3>
+				{%  for term in post.terms('challenges') %}
+					<p>{{term.name}}</p>
+				{% endfor %}
+				<h3>{{ __("Locations","hackathon-theme") }}</h3>
+				{%  for term in post.terms('locations') %}
+					<p>{{term.name}}</p>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+

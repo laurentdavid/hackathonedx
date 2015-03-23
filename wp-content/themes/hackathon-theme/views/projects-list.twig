@@ -1,0 +1,18 @@
+<ul class="box-list full project-list">
+{% for post in posts | slice (0, sponsorship_max_level) %}
+<li>
+	<div class="box-content">
+	
+	<h4><a href="{{post.link}}">{{  post.title}}</a></h4>
+    	{{post.post_content | striptags | slice (0,200)}}
+    	<footer>
+		     {% if challenge_post_info %}
+          		<h5>Challenge</h5>
+          		<p>{{ challenge_post_title }}</p>
+     		{% endif %} 
+    	</footer>
+  	</div>
+ 	<a href="{{post.link}}" class="btn btn-clr">View Project</a>
+</li>
+{% endfor %}
+</ul>

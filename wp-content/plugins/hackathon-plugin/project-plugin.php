@@ -3,9 +3,9 @@
 // Include CMB for additional metabox
 require_once( 'Custom-Meta-Boxes/custom-meta-boxes.php' );
 
-
 add_action ('init','register_project_post_type');
 function register_project_post_type() {
+	
 	$labels = array (
 			'name' => __ ( 'Projects', 'hackathon-plugin' ),
 			'singular_name' => __ ( 'Project', 'hackathon-plugin' ),
@@ -28,19 +28,22 @@ function register_project_post_type() {
 			'show_in_menu' => true,
 			'query_var' => true,
 			'rewrite' => true,
-			'capability_type' => 'post',
+			'capability_type' => array('project','projects'),
 			'has_archive' => true,
+			'rewrite' => array('slug' => 'projects'),
 			'hierarchical' => false,
 			'menu_position' => null,
+			'map_meta_cap' => true,
 			'supports' => array (
 					'title',
 					'editor',
 					'thumbnail',
-					'excerpt' 
+					'excerpt',
+					'author',
 			) 
 	);
-	
 	register_post_type ( 'projects', $args );
+	
 }
 
 
@@ -95,3 +98,83 @@ function cmb_project_metaboxes( array $meta_boxes ) {
 	return $meta_boxes;
 
 }
+function add_project_manager_role() {
+	// Add a new role to manage projects posts
+	$role = add_role ( 'project_manager', 'Project Manager', array (
+			'read' => true,
+			'edit_posts' => false,
+			'edit_others_posts' => false,
+			'delete_posts' => false,
+			'publish_posts' => false,
+			'upload_files' => true,
+			'moderate_comment' => false 
+	) );
+	if ($role != null) {
+		// Add the roles you'd like to administer the custom post types
+		$roles = array (
+				'project_manager',
+				'administrator',
+				'author',
+				'editor'
+		);
+		
+		// Loop through each role and assign capabilities
+		foreach ( $roles as $the_role ) {
+			
+			$role = get_role ( $the_role );
+			
+			if ($the_role == 'project_manager') {
+				$role->add_cap ( 'read' );
+				$role->add_cap ( 'upload_files' );
+			}
+			$role->add_cap ( 'edit_project' );
+			$role->add_cap ( 'edit_projects' );
+			$role->add_cap ( 'delete_project' );
+			if (in_array($the_role, array ('administrator','author','editor'))) {
+				$role->add_cap ( 'read_projects' );
+				$role->add_cap ( 'delete_projects' );
+				$role->add_cap ( 'edit_others_projects' );
+				$role->add_cap ( 'edit_others_project' );
+				$role->add_cap ( 'publish_projects' );
+				$role->add_cap ( 'edit_published_projects' );
+				$role->add_cap ( 'delete_published_projects' );
+				$role->add_cap ( 'edit_private_projects' );
+				$role->add_cap ( 'delete_private_projects' );
+			}
+		}
+	}
+}
+
+function remove_project_manager_role() {
+	// Add the roles you'd like to administer the custom post types
+	$roles = array (
+			'project_manager', 
+			'administrator',
+			'author',
+			'editor'
+	);
+	
+	// Loop through each role and assign capabilities
+	foreach ( $roles as $the_role ) {
+		
+		$role = get_role ( $the_role );
+		
+		if (in_array($the_role, array ('administrator','author','editor')) ) {			
+			$role->remove_cap ( 'read_projects' );
+			$role->remove_cap ( 'delete_projects' );
+			$role->remove_cap ( 'edit_others_projects' );
+			$role->remove_cap ( 'edit_others_project' );
+			$role->remove_cap ( 'publish_projects' );
+			$role->remove_cap ( 'edit_published_projects' );
+			$role->remove_cap ( 'delete_published_projects' );
+			$role->remove_cap ( 'edit_private_projects' );
+			$role->remove_cap ( 'delete_private_projects' );
+				
+				
+		}
+	}
+	// Remove role to manage projects posts
+	remove_role ( 'project_manager' );
+}
+
+

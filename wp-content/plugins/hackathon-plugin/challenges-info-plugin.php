@@ -36,7 +36,8 @@ function register_challenge_page_type() {
 					'title',
 					'editor',
 					'thumbnail',
-					'excerpt'
+					'excerpt',
+					'page-attributes'
 			)
 	);
 

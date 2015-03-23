@@ -36,7 +36,8 @@ function register_organiser_page_type() {
 					'title',
 					'editor',
 					'thumbnail',
-					'excerpt'
+					'excerpt',
+					'page-attributes'
 			)
 	);
 

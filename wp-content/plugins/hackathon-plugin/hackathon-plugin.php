@@ -13,11 +13,11 @@ function hackathon_load_translation_files() {
 }
 
 // Add Challenges Info pages, location info pages and project posts
-require_once ('project-plugin.php');
-require_once ('challenges-info-plugin.php');
-require_once ('locations-info-plugin.php');
-require_once ('organisers-info-plugin.php');
-require_once ('sponsors-info-plugin.php');
+include_once ('project-plugin.php');
+include_once ('challenges-info-plugin.php');
+include_once ('locations-info-plugin.php');
+include_once ('organisers-info-plugin.php');
+include_once ('sponsors-info-plugin.php');
 
 
 // add action to load my plugin files
@@ -25,9 +25,9 @@ add_action ( 'plugins_loaded', 'hackathon_load_translation_files' );
 
 require_once("Tax-Meta-Class/Tax-meta-class/Tax-meta-class.php");
 
-add_action ( 'init', 'register_subjects_taxonomy' );
+add_action ( 'init', 'register_challenges_taxonomy' );
 
-function register_subjects_taxonomy() {
+function register_challenges_taxonomy() {
 	// Subjects will be internally administered and are used as taxonomies for other entities 
 	register_taxonomy ( 'challenges', array (
 			'projects'
@@ -59,7 +59,7 @@ function register_subjects_taxonomy() {
 			'use_with_theme' => false          //change path if used with theme set to true, false for a plugin or anything else for a custom path(default false).
 	);
 	$my_meta =  new Tax_Meta_Class($config);
-	$my_meta->addPosts($prefix.'challenge_info_field_id',array('args' => array('post_type' => 'challenges-info')),array('name'=> __('Challenge Information Page','hackedx-plugin')));
+	$my_meta->addPosts($prefix.'challenge_info_field_id',array('args' => array('post_type' => 'challenges-info','numberposts'=>'50')),array('name'=> __('Challenge Information Page','hackedx-plugin')));
 	$my_meta->Finish();
 	
 }
@@ -97,9 +97,21 @@ function register_locations_taxonomy() {
 					'use_with_theme' => false          
 			);
 			$my_meta =  new Tax_Meta_Class($config);
-			$my_meta->addPosts($prefix.'location_info_field_id',array('args' => array('post_type' => 'locations-info')),array('name'=> __('Location Information Page','hackedx-plugin')));
+			$my_meta->addPosts($prefix.'location_info_field_id',array('args' => array('post_type' => 'locations-info','numberposts'=>'50')),array('name'=> __('Location Information Page','hackedx-plugin')));
 			$my_meta->Finish();
 
+}
+
+
+register_activation_hook(__FILE__, 'add_project_manager_role' );
+register_deactivation_hook(__FILE__, 'remove_project_manager_role' );
+
+
+add_action( 'admin_menu', 'remove_post_menu_pages' );
+
+function remove_post_menu_pages() {
+	remove_menu_page('edit-comments.php');
+	remove_menu_page('edit.php');
 }
 
 ?>

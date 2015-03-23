@@ -4,6 +4,7 @@ include_once (plugin_dir_path ( __FILE__ ) . '../../plugins/hackathon-plugin/Tax
 
 // Get metabox and save triggers
 include_once (plugin_dir_path ( __FILE__ ) . '../../plugins/hackathon-plugin/Custom-Meta-Boxes/custom-meta-boxes.php');
+
 function add_meta_info_to_taxonomy(&$taxonomy) {
 	$info_postid = get_tax_meta ( $taxonomy->term_id, "hxs_challenge_info_field_id" );
 	if (! empty ( $info_postid )) {
@@ -11,6 +12,9 @@ function add_meta_info_to_taxonomy(&$taxonomy) {
 	}
 }
 const MAX_TEAM_SIZE = 10;
+const SPONSOR_MAX_GOLD= 4;
+const SPONSOR_MAX_PLATINIUM= 2;
+const SPONSOR_MAX_SILVER= 8;
 
 // Override the save function in order to get it from any point
 class CMB_Meta_Box_hacktheme extends CMB_Meta_Box {

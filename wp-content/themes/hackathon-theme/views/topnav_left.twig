@@ -1,0 +1,12 @@
+<ul class="title-area">
+    <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li > 
+	   <div class="logos_top"> 
+    		<a href="{{ function('get_theme_mod','facebook_link' )}}" /><img src="{{ image_url }}FB-f-Logo__white_29.png" alt="{{ __( 'Facebook Link','hackathon-theme' )}}"/></a>
+			<a href="{{ function('get_theme_mod','twitter_link' )}}"/><img src="{{ image_url }}Twitter_logo_white_29.png" alt="{{ __('Facebook Link','hackathon-theme' ) }}"/></a>
+		</div>
+	</li>
+    
+    <li> <a href="{{ function('esc_url','/' ) }}" title="Home" rel="home">{{function('get_theme_mod','wpforge_nav_text')}}</a></li>
+    <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+ </ul>

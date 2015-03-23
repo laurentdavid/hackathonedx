@@ -1552,7 +1552,7 @@ class Tax_Meta_Class {
    *  @param $repeater bool  is this a field inside a repeatr? true|false(default)
    */
   public function addPosts($id,$options,$args,$repeater=false){
-    $q = array('posts_per_page' => -1);
+    $q = array('post_per_page' => -1);
     $temp = array('post_type' =>'post','type'=>'select','args'=>$q);
     $options = array_merge($temp,$options);
     $new_field = array('type' => 'posts','id'=> $id,'desc' => '','name' => 'Posts Field','options'=> $options,'multiple' => false);

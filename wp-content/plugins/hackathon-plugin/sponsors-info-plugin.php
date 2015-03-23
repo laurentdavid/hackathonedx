@@ -30,13 +30,14 @@ function register_sponsor_page_type() {
 			'rewrite' => true,
 			'capability_type' => 'page',
 			'has_archive' => true,
-			'hierarchical' => true,
+			'hierarchical' => false,
 			'menu_position' => null,
 			'supports' => array (
 					'title',
 					'editor',
 					'thumbnail',
-					'excerpt'
+					'excerpt',
+					'page-attributes'
 			)
 	);
 
@@ -70,7 +71,20 @@ function cmb_sponsor_metaboxes( array $meta_boxes ) {
 					'desc' => __('Select a video presenting the sponsor', 'hackathon-plugin'),
 					'type' => 'text_url',
 			),
-				
+			array(
+					'id'   => 'sponsor_level_type',
+					'name' => __('Sponsor Level', 'hackathon-plugin'),
+					'desc' => __('Select a level for the sponsor', 'hackathon-plugin'), 
+    				'type'    => 'select', 
+    				'options' => array(
+        				'silver' => __('Argent', 'hackathon-plugin'),
+    					'gold' => __('Or', 'hackathon-plugin'),
+    					'platinium' => __('Platine', 'hackathon-plugin'),
+    						
+    				),
+						
+			),
+
 	);
 	$meta_boxes['sponsor_information_metabox'] = array(
 			'title' => 'Sponsor Information',

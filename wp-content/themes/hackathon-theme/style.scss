@@ -1,0 +1,406 @@
+/*
+Theme Name: Hackathon Theme
+Theme URI: 
+Description: A theme for the Hackathon Event
+Author: Laurent David
+Author URI: 
+Template: wp-forge
+Version: 3.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.1.html
+Tags: light, gray, white, one-column, two-columns, right-sidebar, custom-background, custom-header, custom-menu, editor-style, featured-images, full-width-template, microformats, post-formats, rtl-language-support, sticky-post, translation-ready
+Text Domain: hackathontheme
+*/
+@CHARSET "UTF-8";
+
+// Define colors
+
+$brandcolor: #0a83c5; //blue
+$brandaccent: #d11f27; //red
+$brandnews: #a65a95; //purple
+$textcolor: #797680;
+$textboldcolor: #484353;
+$textlightcolor: #bcbabf;
+$bordercolor: #eaeaea;
+$darkbordercolor: #d5d5d5;
+$bgcolor: #f9f8f8;
+
+// Definition from http://hackforchange.org/
+%clean {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+%boxstyle {
+  background: #fff;
+  border: 1px solid #e9e9e9;
+  border-top-color: #f2f2f2;
+  border-bottom-color: #d7d7d7;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(#000,0.04);
+}
+
+// Remove the screen reader Text
+
+.screen-reader-text {
+  height: 1px;
+  width: 1px;
+  position: absolute;
+  overflow: hidden;
+  top: -10px;
+}
+
+// Reset Fonts
+
+.btn, input, body {
+  font-family: proxima-nova, 'Proxima Nova', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+
+.avatars, .timeline .bubble, #tiptip_content, .form-row label, fieldset legend, .ss-q-title, h1, h2, h3, h4, .site-header, .site-header .search-input, .home-events .event-locations a, .page-menu, .pagination .posts-nav, .search-bar .search-input, .search-bar .search-field, .search-bar select, .search-bar input[type='submit'], .event-organizers, .data-list .meta, .report-nav, .report-people blockquote {
+  font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+
+// Header settings for front page 
+
+.header_before_container {
+ 	margin-top: -45px;
+ 	background-repeat: no-repeat;
+ 	background-position: top;
+	background-color: #eeeeee;
+}
+
+ 
+#header-before {
+	background-color:transparent;
+}
+ 
+#header-before .site-header {
+	margin-top: 10%;
+	margin-bottom: 10%;
+	background-color: rgba(255,212,42,0.20) !important;
+	border: 1px #ff820e dotted;
+	-moz-border-radius: 23px;
+	border-radius: 23px;
+	-webkit-box-shadow: #B3B3B3 14px 14px 14px;
+	-moz-box-shadow: #B3B3B3 14px 14px 14px;
+	box-shadow: #B3B3B3 14px 14px 14px;
+	min-height:600px;
+}
+
+#header-before .site-title {
+	text-align: center;
+	font-size: 80px;
+	font-weight: bold;
+	color:#444444;
+}
+
+#header-before .site-description {
+	text-align: center;
+	font-size: 46px;
+	font-weight: bold;
+	color:#222222;
+}
+
+#header-before .hackathon-dates {
+	text-align: center;
+	font-size: 56px;
+	font-weight: bold;
+	color:#ff0000;
+}
+
+#header-before .register-hackathon {
+	background-color : #ff0000 !important;
+	font-weight: bold;
+	text-align: center;
+	display: block;
+	font-variant: small-caps;
+}
+
+// Headers setting for other pages 
+
+.header_container {
+ 	margin-top: -45px;
+ 	background-repeat: no-repeat;
+ 	background-position: top;
+	background-color: #eeeeee;
+}
+
+ 
+#header {
+	background-color:transparent;
+}
+ 
+.site-header {
+	margin-top: 100px;
+	margin-bottom: 100px;
+	height: 80%;
+	background-color: rgba(255,212,42,0.20) !important;
+	border: 1px #ff820e dotted;
+	-moz-border-radius: 23px;
+	border-radius: 23px;
+	-webkit-box-shadow: #B3B3B3 14px 14px 14px;
+	-moz-box-shadow: #B3B3B3 14px 14px 14px;
+	box-shadow: #B3B3B3 14px 14px 14px;
+	
+}
+
+.site-title {
+	text-align: center;
+	font-size: 40px;
+	font-weight: bold;
+	color:#444444;
+}
+
+.site-description {
+	text-align: center;
+	font-size: 25px;
+	font-weight: bold;
+	color:#222222;
+}
+
+.hackathon-dates {
+	text-align: center;
+	font-size: 25px;
+	font-weight: bold;
+	color:#ff0000;
+}
+
+.register-hackathon {
+	background-color : #ff0000 !important;
+	font-weight: bold;
+	text-align: center;
+	font-variant: small-caps;
+	display:inline-block;
+	
+	margin-left:30%;
+	margin-right: 30%
+}
+
+// Social
+ 
+ .social_search_bar {
+	padding-right:2px;
+	padding-left:2px;
+ }
+ #searchsubmit, #s {
+ 	   padding: 2px;
+ 	   height:29px;
+ 	   margin:auto;
+ 	   padding-top: 3px;
+ 	   /*margin-top:2px;*/
+ }
+ .top-bar {
+ 	background-color: rgba(42,42,42,0.50) !important;
+ }
+ 
+ #map {height:600px;}
+ 
+ .logos_top {
+ 	display: inline-block;
+    vertical-align: middle;  /* vertical alignment of the inline element */ 
+    float:none; 
+    margin-top: 8px;
+    margin-left: 8px
+ }
+ .title-area  {
+	height: 100%;
+	
+}
+ 
+// Sponsors
+
+
+// All listing boxes from front page
+.front-page-list { 
+  text-align: left;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  li {
+    @extend %boxstyle;
+    display: inline-block;
+    font-size: 14px;
+    padding: 20px 20px 60px 20px;
+    min-height: 396px;
+    position: relative;
+  }
+  h4 {
+    margin: 20px 0 12px;
+    background-color: rgba(255,255,150,0.20) !important;
+	-moz-border-radius: 23px;
+	border-radius: 23px;
+	-webkit-box-shadow: #B3B3B3 14px 14px 14px;
+	-moz-box-shadow: #B3B3B3 14px 14px 14px;
+	box-shadow: #B3B3B3 14px 14px 14px;
+	text-align:center;
+	vertical-align:middle;
+    strong {
+      font-weight: normal;
+    }
+    a span {
+      color: $textlightcolor;
+      display: block;
+      font-size: 12px;
+      margin: 5px 0;
+    }
+    .cut {
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    &:after {
+      content: '';
+      background: $bordercolor;
+      display: block;
+      width: 30px;
+      height: 1px;
+      margin-top: 15px;
+    }
+  }
+  .btn {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    opacity: 0.8;
+    text-color: blue;
+    text-align: center;
+  }
+}
+
+
+.no-sponsor {
+	border: none !important;
+	color: #bbbbbb !important;
+}
+.info-link {
+	font: bold 1.6em/1.2em "Open Sans",Verdana,Geneva,sans-serif,sans-serif;
+}
+// Locations and Organisers listing
+ 
+
+
+
+.btn-clr {
+  background: #fff;
+  border: 1px solid $bordercolor;
+  color: $textcolor;
+  padding: 8px 15px;
+  &:visited {
+    color: $textcolor;
+  }
+  &:hover,
+  &:focus {
+    border-color: $darkbordercolor;
+    background: #fff;
+    color: $textboldcolor;
+  }
+}
+
+.box-list {
+  @extend %clean;
+  float: left;
+  font-size: 0;
+  width: 78%;
+  li {
+    @extend %boxstyle;
+    display: inline-block;
+    font-size: 14px;
+    margin-left: 5.1679%;
+    padding: 0 20px 60px 20px;
+    min-height: 396px;
+    width: 28.165%;
+    vertical-align: top;
+    position: relative;
+  }
+  .thumb {
+    display: block;
+    margin: 0 -20px;
+    img {
+      display: block;
+      border-radius: 3px 3px 0 0;
+    }
+  }
+  h4 {
+    margin: 20px 0 12px;
+    strong {
+      font-weight: normal;
+    }
+    a span {
+      color: $textlightcolor;
+      display: block;
+      font-size: 12px;
+      margin: 5px 0;
+    }
+    .cut {
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    &:after {
+      content: '';
+      background: $bordercolor;
+      display: block;
+      width: 30px;
+      height: 1px;
+      margin-top: 15px;
+    }
+  }
+  .btn {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+  }
+  &.full {
+    width: 104.024194%;
+    padding: 0;
+    margin: 0 -1.9569%;
+    li {
+      width: 21.2%;
+      margin: 0 1.85% 40px;
+    }
+  }
+  p {
+    margin-top: 0;
+  }
+}
+
+// Project List
+.project-list { 
+  text-align: left;
+  li {
+    padding: 0 15px 60px;
+    word-wrap: break-word;
+  }
+  &.full li {
+    width: 29.6%;
+  }
+  h5 {
+    text-transform: uppercase;
+    margin: 10px 0 0;
+    color: $textlightcolor;
+  }
+  footer {
+    font-size: 12px;
+    line-height: 1.3;
+    p {
+      margin: 4px 0 6px;
+      font-size: 12px;
+      font-weight: bold;
+      line-height: 1.5;
+    }
+    &:before {
+      content: '';
+      background: #eaeaea;
+      display: block;
+      width: 30px;
+      height: 1px;
+      margin: 15px 0;
+    }
+  }
+}
+.projects-section {
+	margin-top: 3em;
+}
+

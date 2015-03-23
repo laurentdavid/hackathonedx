@@ -8,6 +8,10 @@
  * @subpackage WP_Forge
  * @since WP-Forge 5.5.0.1
  */
+if (!isset($HEADER_BACKGROUND_PATH))
+{
+	$HEADER_BACKGROUND_PATH=get_bloginfo('url')."/wp-content/themes/hackathon-theme/img/before-event-background-";
+}
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js">
 <head>
@@ -22,17 +26,6 @@
 
 <body <?php body_class(); ?>>
 
-	<div id="social_header" class="row" >
-		<div class="social_icons  large-3 columns">
-            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="Home" rel="home"><?php echo get_theme_mod( 'wpforge_nav_text' ); ?></a>
-            <img src="<?php bloginfo('url'); ?>/wp-content/themes/hackathon-theme/img/facebook30.png" alt="<?php _e( 'Facebook Link','hackathon-theme' ); ?>"/>
-            <img src="<?php bloginfo('url'); ?>/wp-content/themes/hackathon-theme/img/twitter30.png" alt="<?php _e( 'Facebook Link','hackathon-theme' ); ?>"/>
-		</div>
-		<div class="social_search_bar large-offset-6 large-3 columns">
-			<?php the_widget( "WP_Widget_Search" ); ?>  
-		</div>
-		
-	</div>
 	
     <?php get_template_part( 'content', 'off_canvas' ); ?>
 
@@ -44,9 +37,12 @@
         <?php get_template_part( 'content', 'nav' ); ?>
     <?php } // end if ?>
 
-        <div class="header_container" data-interchange="[<?php bloginfo('url'); ?>/wp-content/themes/hackathon-theme/img/before-event-background-small.jpg,(small)], [<?php bloginfo('url'); ?>/wp-content/themes/hackathon-theme/img/before-event-background-medium.jpg,(medium)], [<?php bloginfo('url'); ?>/wp-content/themes/hackathon-theme/img/before-event-background-large.jpg,(large)][<?php bloginfo('url'); ?>/wp-content/themes/hackathon-theme/img/before-event-background-xlarge.jpg,(xlarge)]">
+        <div class="header_before_container" data-interchange="[<?php echo $HEADER_BACKGROUND_PATH?>small.jpg,(small)],
+				[<?php echo $HEADER_BACKGROUND_PATH?>medium.jpg,(medium)],
+        		[<?php echo $HEADER_BACKGROUND_PATH?>large.jpg,(large)],
+        		[<?php echo $HEADER_BACKGROUND_PATH?>xlarge.jpg,(xlarge)]">
 
-        <header id="header" class="header_wrap row" role="banner"> 
+        <header id="header-before" class="header_wrap row" role="banner"> 
             <div class="site-header medium-12 large-12 columns">
                 <?php if ( get_header_image() ) : ?>
                 <div class="header-logo">
@@ -57,14 +53,14 @@
                     <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
                     <h2 class="site-description show-for-medium-up"><?php bloginfo( 'description' ); ?></h2>
                     <h2 class="hackathon-dates"><?php  echo get_theme_mod( 'event_date_text' ); ?></h2>
-                    <a href="#" class="button round large register-hackathon"><?php  _e( 'Register Now!','hackathon-theme' ); ?></a>                    
+                    <a href="<?php get_theme_mod( 'register_link' )?>" class="button round large register-hackathon"><?php  _e( 'Register Now!','hackathon-theme' ); ?></a>                    
                 </div><!-- /.header-info -->
                 
              </div><!-- .site-header -->
         </header><!-- #header -->
 
         </div><!-- end .header_container -->
-
+	
             <?php if( get_theme_mod( 'wpforge_nav_position' ) == '') { ?>
                 <?php get_template_part( 'content', 'nav' ); ?>
             <?php } // end if ?>       

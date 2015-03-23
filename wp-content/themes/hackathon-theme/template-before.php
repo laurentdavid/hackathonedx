@@ -9,22 +9,33 @@ get_header('home-before');
 <?php while ( have_posts() ) : the_post(); ?>
 
 <section>
-  <div class="container">
-    <div class="main-content">
+	<div class="container">
+		<div class="main-content">
     <?php the_content();   ?>
-    </div>    
+    </div>
+
 </section>
 
-
+<h1 class="front-page"><?php  _e("The sponsors","hackathon-plugin"); ?></h1>
 <section class="sponsors">
 <?php
-	$args = array (
-		'post_type' => 'sponsors-info',
-	);
-	$context['posts'] = Timber::get_posts($args);
-	Timber::render('sponsors-list.twig', $context);  
-?>
+	foreach ( array ('platinium'=> SPONSOR_MAX_PLATINIUM,'gold' => SPONSOR_MAX_GOLD,'silver' => SPONSOR_MAX_SILVER) 
+			as $sponsor_level => $sponsor_max_level ) {
+			$args = array (
+					'post_type' => 'sponsors-info',
+					'meta_key' => 'sponsor_level_type',
+					'meta_value' => $sponsor_level
+			);
+			$context ['posts'] = Timber::get_posts ( $args );
+			$context ['sponsorship_level'] = $sponsor_level;
+			$context ['sponsorship_max_level'] = $sponsor_max_level;
+			if (!empty($context ['posts'])) {
+				Timber::render ( 'sponsors-list.twig', $context );
+			}
+		}
+		?>
 </section>
+<h1 class="front-page"><?php  _e("The organisers","hackathon-plugin"); ?></h1>
 <section class="organisers">
 <?php
 	$args = array (
@@ -35,6 +46,7 @@ get_header('home-before');
 ?>
 </section>
 
+<h1 class="front-page"><?php  _e("The locations","hackathon-plugin"); ?></h1>
 <section class="locations">
 
 <?php
@@ -44,20 +56,6 @@ get_header('home-before');
 	$context['posts'] = Timber::get_posts($args);
 	Timber::render('locations-list.twig', $context);  
 ?>
-<div id="map"/>
-<script>
-// Provide your access token
-L.mapbox.accessToken = 'pk.eyJ1IjoibGF1cmVudGRhdmlkIiwiYSI6IjdxY1ViZGsifQ.Lom52F2ZP27xWm9l-61Vfg';
-// Create a map in the div #map
-var map = L.mapbox.map('map', 'laurentdavid.lfn94m2i').setView( L.latLng(46.377, 3.032), 6 );
-map.touchZoom.disable();
-map.doubleClickZoom.disable();
-map.scrollWheelZoom.disable();
-// disable tap handler, if present.
-if (map.tap) map.tap.disable();
-
-</script>
-
 
 </section>
 

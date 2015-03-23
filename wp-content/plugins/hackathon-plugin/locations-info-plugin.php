@@ -37,7 +37,8 @@ function register_location_page_type() {
 					'title',
 					'editor',
 					'thumbnail',
-					'excerpt'
+					'excerpt',
+					'page-attributes'
 			)
 	);
 
@@ -71,6 +72,13 @@ function cmb_location_metaboxes( array $meta_boxes ) {
 					'desc' => __('Select a video presenting the location', 'hackathon-plugin'),
 					'type' => 'text_url',
 			),
+			array(
+					'id'   => 'location_capacity',
+					'name' => __('Maximum Capacity', 'hackathon-plugin'),
+					'desc' => __('Set a maximum capacity for this location', 'hackathon-plugin'),
+					'type' => 'text',
+			),
+				
 				
 	);
 	$meta_boxes['location_info_metabox'] = array(
